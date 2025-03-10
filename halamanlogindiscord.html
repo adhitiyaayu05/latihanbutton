@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #3652d9 0%, #7289da 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8Y2lyY2xlIGN4PSIxMCUiIGN5PSIyMCUiIHI9IjUiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIgLz4KPGNpcmNsZSBjeD0iMzAlIiBjeT0iNDAlIiByPSI3IiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIC8+CjxjaXJjbGUgY3g9IjUwJSIgY3k9IjIwJSIgcj0iNiIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjEpIiAvPgo8Y2lyY2xlIGN4PSI3MCUiIGN5PSI1MCUiIHI9IjQiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIgLz4KPGNpcmNsZSBjeD0iODUlIiBjeT0iMzAlIiByPSI4IiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIC8+Cjwvc3ZnPg==');
+        }
+        
+        .discord-logo {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .discord-logo img {
+            width: 30px;
+            margin-right: 10px;
+        }
+        
+        .login-container {
+            background-color: #36393f;
+            width: 780px;
+            display: flex;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .login-form {
+            flex: 1;
+            padding: 32px;
+        }
+        
+        .qr-section {
+            flex: 0.7;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #36393f;
+            color: white;
+            text-align: center;
+        }
+        
+        .qr-code {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 24px;
+            width: 176px;
+            height: 176px;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .qr-section h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: white;
+        }
+        
+        .qr-section p {
+            font-size: 15px;
+            color: #b9bbbe;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        
+        .qr-section a {
+            color: #00b0f4;
+            text-decoration: none;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+        
+        .login-form h1 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .login-form p {
+            color: #b9bbbe;
+            font-size: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            color: #8e9297;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        label span {
+            color: #f04747;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            background-color: #202225;
+            border: 1px solid #222428;
+            color: white;
+            border-radius: 3px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #7289da;
+        }
+        
+        .forgot-password {
+            margin-top: 4px;
+            font-size: 14px;
+        }
+        
+        .forgot-password a {
+            color: #00b0f4;
+            text-decoration: none;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #5865f2;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .login-button:hover {
+            background-color: #4752c4;
+        }
+        
+        .register-link {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #72767d;
+        }
+        
+        .register-link a {
+            color: #00b0f4;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="discord-logo">
+        <svg width="124" height="34" viewBox="0 0 124 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.0015 6.9529C24.0021 6.03845 21.8787 5.37198 19.6623 5C19.3833 5.48048 19.0733 6.13144 18.8563 6.64292C16.4989 6.30193 14.1585 6.30193 11.8336 6.64292C11.6166 6.13144 11.2911 5.48048 11.0276 5C8.79575 5.37198 6.67235 6.03845 4.6869 6.9529C0.672601 12.8736 -0.41235 18.6548 0.130124 24.3585C2.79599 26.2959 5.36889 27.4739 7.89682 28.2489C8.51679 27.4119 9.07477 26.5129 9.55525 25.5675C8.64079 25.2265 7.77283 24.808 6.93587 24.312C7.15286 24.1571 7.36986 23.9866 7.57135 23.8161C12.6241 26.1255 18.0969 26.1255 23.0876 23.8161C23.3046 23.9866 23.5061 24.1571 23.7231 24.312C22.8861 24.808 22.0182 25.2265 21.1037 25.5675C21.5842 26.5129 22.1422 27.4119 22.7621 28.2489C25.2885 27.4739 27.8769 26.2959 30.5288 24.3585C31.1952 17.7559 29.4733 12.0212 26.0015 6.9529ZM10.2527 20.8402C8.73376 20.8402 7.49382 19.4608 7.49382 17.7714C7.49382 16.082 8.70276 14.7025 10.2527 14.7025C11.7871 14.7025 13.0425 16.082 13.0115 17.7714C13.0115 19.4608 11.7871 20.8402 10.2527 20.8402ZM20.4373 20.8402C18.9183 20.8402 17.6768 19.4608 17.6768 17.7714C17.6768 16.082 18.8873 14.7025 20.4373 14.7025C21.9717 14.7025 23.2271 16.082 23.1961 17.7714C23.1961 19.4608 21.9872 20.8402 20.4373 20.8402Z" fill="white"/>
+            <path d="M41.2697 9.86615H47.8585C49.4394 9.86615 50.7878 10.1141 51.8883 10.6101C52.9887 11.1061 53.8102 11.7881 54.3527 12.6715C54.8951 13.5549 55.1741 14.5624 55.1741 15.7096C55.1741 16.8248 54.8952 17.8323 54.3217 18.7158C53.7482 19.5992 52.8803 20.2967 51.7178 20.7772C50.5554 21.2577 49.1139 21.4902 47.3935 21.4902H41.2697V9.86615ZM47.316 18.6852C48.662 18.6852 49.6539 18.4215 50.2739 17.8942C50.8939 17.3668 51.2039 16.6387 51.2039 15.7096C51.2039 14.8111 50.8785 14.0676 50.2119 13.4938C49.5454 12.92 48.5844 12.6252 47.3159 12.6252H45.1798V18.6852H47.316Z" fill="white"/>
+            <path d="M65.4362 21.6642C64.5217 21.4335 63.7333 21.1079 63.0358 20.6735L64.2447 18.2604C64.9112 18.6484 65.6553 18.9659 66.4747 19.2129C67.2942 19.4599 68.0981 19.5834 68.8866 19.5834C69.6286 19.5834 70.1865 19.4753 70.5605 19.2594C70.9344 19.0434 71.1213 18.7464 71.1213 18.3684C71.1213 18.0679 71.0058 17.8365 70.7888 17.6515C70.5718 17.4665 70.2858 17.3121 69.9273 17.1889C69.5689 17.0657 69.0889 16.9271 68.4872 16.7731C67.55 16.5211 66.7769 16.269 66.1677 16.017C65.5585 15.7649 65.0394 15.3715 64.6034 14.8265C64.1674 14.2815 63.9504 13.537 63.9504 12.6045C63.9504 11.8161 64.1674 11.1031 64.6189 10.4841C65.0704 9.86505 65.7059 9.37805 66.5409 9.02055C67.3759 8.66306 68.3678 8.48956 69.5227 8.48956C70.4599 8.48956 71.3743 8.61272 72.2423 8.83772C73.1103 9.06272 73.8693 9.39472 74.5358 9.83372L73.3888 12.2623C72.1335 11.4893 70.8161 11.1031 69.4365 11.1031C68.7081 11.1031 68.1655 11.2262 67.7915 11.4737C67.4176 11.7212 67.2161 12.0375 67.2161 12.4235C67.2161 12.8555 67.4485 13.1755 67.9135 13.3915C68.3785 13.6075 69.0889 13.839 70.0573 14.0705C71.0058 14.3225 71.7788 14.5745 72.3881 14.8265C72.9973 15.0785 73.5163 15.472 73.9524 15.9995C74.3884 16.527 74.6054 17.2405 74.6054 18.1555C74.6054 18.9284 74.3884 19.6259 73.9369 20.2449C73.4854 20.864 72.8449 21.3509 72.0099 21.7084C71.1749 22.0659 70.183 22.2394 69.0116 22.2394C67.9731 22.2239 66.9658 22.0039 65.4362 21.6642Z" fill="white"/>
+            <path d="M85.4871 21.6874C84.5881 21.3144 83.8286 20.7849 83.2039 20.0874L85.3182 18.1555C86.238 19.2594 87.3849 19.8114 88.7489 19.8114C89.8344 19.8114 90.3769 19.5004 90.3769 18.8784C90.3769 18.6004 90.2149 18.3994 89.8759 18.2449C89.5369 18.0904 88.9894 17.9359 88.2164 17.7664C87.2482 17.5659 86.4288 17.3349 85.7724 17.0884C85.1159 16.8419 84.5432 16.4562 84.0389 15.9529C83.5346 15.4497 83.2886 14.7522 83.2886 13.8842C83.2886 13.1402 83.5191 12.4892 83.9954 11.9152C84.4562 11.3412 85.1005 10.89 85.9124 10.5889C86.7243 10.2879 87.6517 10.1249 88.6944 10.1249C89.6162 10.1249 90.4901 10.2339 91.3329 10.4529C92.1602 10.6719 92.8727 10.9884 93.4664 11.4122L91.5811 13.3599C91.0614 13.0589 90.5107 12.8342 89.9443 12.6772C89.3779 12.5202 88.8115 12.4472 88.2914 12.4472C87.6982 12.4472 87.2542 12.5357 86.9462 12.7082C86.6227 12.8807 86.4747 13.1247 86.4747 13.4257C86.4747 13.7267 86.6372 13.9507 86.9617 14.1077C87.2862 14.2647 87.8337 14.4217 88.6169 14.5942C89.5851 14.8102 90.4045 15.0412 91.0614 15.2722C91.7184 15.5032 92.2754 15.8737 92.7327 16.3924C93.1899 16.9112 93.4044 17.6242 93.4044 18.5232C93.4044 19.2827 93.1739 19.9492 92.6976 20.5077C92.2214 21.0662 91.5656 21.5019 90.7383 21.8029C89.9108 22.1039 88.9739 22.2394 87.9438 22.2394C87.0293 22.2394 86.2099 22.0604 85.4871 21.6874Z" fill="white"/>
+            <path d="M103.836 21.6874C102.937 21.3144 102.178 20.7849 101.553 20.0874L103.667 18.1555C104.587 19.2594 105.734 19.8114 107.098 19.8114C108.184 19.8114 108.726 19.5004 108.726 18.8784C108.726 18.6004 108.564 18.3994 108.225 18.2449C107.886 18.0904 107.339 17.9359 106.566 17.7664C105.597 17.5659 104.778 17.3349 104.122 17.0884C103.465 16.8419 102.893 16.4562 102.388 15.9529C101.884 15.4497 101.638 14.7522 101.638 13.8842C101.638 13.1402 101.868 12.4892 102.345 11.9152C102.805 11.3412 103.45 10.89 104.262 10.5889C105.073 10.2879 106.001 10.1249 107.044 10.1249C107.965 10.1249 108.839 10.2339 109.682 10.4529C110.509 10.6719 111.222 10.9884 111.816 11.4122L109.93 13.3599C109.411 13.0589 108.86 12.8342 108.294 12.6772C107.727 12.5202 107.161 12.4472 106.641 12.4472C106.047 12.4472 105.604 12.5357 105.296 12.7082C104.972 12.8807 104.824 13.1247 104.824 13.4257C104.824 13.7267 104.987 13.9507 105.311 14.1077C105.636 14.2647 106.183 14.4217 106.966 14.5942C107.934 14.8102 108.754 15.0412 109.411 15.2722C110.068 15.5032 110.625 15.8737 111.082 16.3924C111.539 16.9112 111.754 17.6242 111.754 18.5232C111.754 19.2827 111.524 19.9492 111.047 20.5077C110.571 21.0662 109.915 21.5019 109.088 21.8029C108.26 22.1039 107.323 22.2394 106.293 22.2394C105.379 22.2394 104.575 22.0604 103.836 21.6874Z" fill="white"/>
+            <path d="M119.058 12.5202V15.3452H123.855V18.5077H119.058V21.4902H115.072V9.34766H124.388V12.5102H119.058V12.5202Z" fill="white"/>
+        </svg>
+    </div>
+    
+    <div class="login-container">
+        <div class="login-form">
+            <h1>Welcome back!</h1>
+            <p>We're so excited to see you again!</p>
+            
+            <div class="form-group">
+                <label for="email">EMAIL OR PHONE NUMBER <span>*</span></label>
+                <input type="text" id="email">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">PASSWORD <span>*</span></label>
+                <input type="password" id="password">
+                <div class="forgot-password">
+                    <a href="#">Forgot your password?</a>
+                </div>
+            </div>
+            
+            <button class="login-button">Log In</button>
+            
+            <div class="register-link">
+                Need an account? <a href="#">Register</a>
+            </div>
+        </div>
+        
+        <div class="qr-section">
+            <div class="qr-code">
+                <img src="/api/placeholder/176/176" alt="QR Code">
+            </div>
+            <h2>Log in with QR Code</h2>
+            <p>Scan this with the Discord mobile</p>
+            <p>app to log in instantly.</p>
+            <a href="#">Or sign in with browser</a>
+        </div>
+    </div>
+</body>
+</html>

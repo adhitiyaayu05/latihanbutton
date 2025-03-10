@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #36393f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTk2MCIgaGVpZ2h0PSIxMTAzIiB2aWV3Qm94PSIwIDAgMTk2MCAxMTAzIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBvcGFjaXR5PSIwLjQiPgo8cGF0aCBkPSJNMTk2NyAxMDcxSDBWMTAySDUuMjY4NDNlLTA1IiBzdHJva2U9InVybCgjcGFpbnQwX3JhZGlhbCkiIHN0cm9rZS13aWR0aD0iMiIvPgo8cGF0aCBkPSJNMTk2OCAxMTAxLjVIMC41VjEuNUg1LjAyNTc3ZS0wNSIgc3Ryb2tlPSJ1cmwoI3BhaW50MV9yYWRpYWwpIiBzdHJva2Utd2lkdGg9IjEiLz4KPC9nPgo8ZGVmcz4KPHJhZGlhbEdyYWRpZW50IGlkPSJwYWludDBfcmFkaWFsIiBjeD0iMCIgY3k9IjAiIHI9IjEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDk4My41IDU4Nikgcm90YXRlKDkwKSBzY2FsZSg0ODQuNSA5ODMuNTAyKSI+CjxzdG9wIHN0b3AtY29sb3I9IiMzMDBCNzMiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTcwMTRDIiBzdG9wLW9wYWNpdHk9IjAiLz4KPC9yYWRpYWxHcmFkaWVudD4KPHJhZGlhbEdyYWRpZW50IGlkPSJwYWludDFfcmFkaWFsIiBjeD0iMCIgY3k9IjAiIHI9IjEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDk4NCA1NTEuNSkgcm90YXRlKDkwKSBzY2FsZSg1NTAgOTg0KSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRjM2NjciLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkYzNjY3IiBzdG9wLW9wYWNpdHk9IjAiLz4KPC9yYWRpYWxHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+            background-color: #2f3136;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+            width: 480px;
+            padding: 32px;
+            color: #fff;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 130px;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #b9bbbe;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #8e9297;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input {
+            background-color: #202225;
+            border: 1px solid #202225;
+            border-radius: 3px;
+            color: #dcddde;
+            font-size: 16px;
+            height: 40px;
+            padding: 10px;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        input:focus {
+            border-color: #7289da;
+        }
+
+        .forgot-password {
+            color: #7289da;
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            background-color: #5865f2;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            height: 44px;
+            margin-top: 24px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .login-button:hover {
+            background-color: #4752c4;
+        }
+
+        .register {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #72767d;
+        }
+
+        .register a {
+            color: #7289da;
+            text-decoration: none;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+
+        .qr-login {
+            display: none;
+        }
+
+        @media (min-width: 830px) {
+            .login-container {
+                width: 784px;
+                display: flex;
+            }
+
+            .login-form {
+                width: 414px;
+                padding-right: a;
+            }
+
+            .qr-login {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-left: 32px;
+                width: 240px;
+            }
+
+            .qr-container {
+                background-color: white;
+                border-radius: 4px;
+                padding: 8px;
+                margin-bottom: 32px;
+            }
+
+            .qr-image {
+                width: 176px;
+                height: 176px;
+            }
+
+            .qr-title {
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+            }
+
+            .qr-subtitle {
+                font-size: 16px;
+                color: #b9bbbe;
+                text-align: center;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <div class="logo">
+                <!-- Discord logo would go here. Using Unicode char as placeholder -->
+                <svg width="130" height="36" viewBox="0 0 130 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M110.995 10.0138H119.089V17.7599H122.694V10.0138H130.788V6.49902H110.995V10.0138Z" fill="white"/>
+                    <path d="M101.222 6.49902H97.502L92.9523 11.2866L88.4026 6.49902H84.6829V17.7599H88.2878V11.8427L92.9523 16.5127L97.6169 11.8427V17.7599H101.222V6.49902Z" fill="white"/>
+                    <path d="M68.4498 14.4203L72.2942 6.49902H76.5564L70.067 17.7599H66.8327L60.3433 6.49902H64.6055L68.4498 14.4203Z" fill="white"/>
+                    <path d="M53.0076 10.0138H45.8741V6.49902H53.0076C55.9158 6.49902 58.2781 8.8613 58.2781 11.7696C58.2781 14.6779 55.9158 17.0401 53.0076 17.0401H45.8741V13.5254H53.0076C53.9751 13.5254 54.7634 12.7371 54.7634 11.7696C54.7634 10.8022 53.9751 10.0138 53.0076 10.0138Z" fill="white"/>
+                    <path d="M26.5009 11.7696C24.5622 11.7696 22.9863 13.3456 22.9863 15.2842C22.9863 17.2229 24.5622 18.7989 26.5009 18.7989C28.4395 18.7989 30.0155 17.2229 30.0155 15.2842C30.0155 13.3456 28.4395 11.7696 26.5009 11.7696ZM26.5009 6.12988C20.7345 6.12988 16.0684 10.7959 16.0684 16.5624V28.585H22.9863V16.5624C22.9863 14.2732 24.2117 13.0478 26.5009 13.0478C28.79 13.0478 30.0155 14.2732 30.0155 16.5624V28.585H36.9334V16.5624C36.9334 10.7959 32.2673 6.12988 26.5009 6.12988Z" fill="white"/>
+                    <path d="M8.89648 13.0478C11.1856 13.0478 12.4111 14.2732 12.4111 16.5624V28.585H19.329V16.5624C19.329 10.7959 14.6629 6.12988 8.89648 6.12988C3.13008 6.12988 0 11.7696 0 11.7696V6.49902H6.91791V11.7696C6.91791 11.7696 7.88526 13.0478 8.89648 13.0478Z" fill="white"/>
+                    <path d="M8.89648 11.7696C10.8351 11.7696 12.4111 13.3456 12.4111 15.2842C12.4111 17.2229 10.8351 18.7989 8.89648 18.7989C6.95783 18.7989 5.38188 17.2229 5.38188 15.2842C5.38188 13.3456 6.95783 11.7696 8.89648 11.7696Z" fill="white"/>
+                    <path d="M76.5564 14.2452C78.8028 14.2452 80.6206 12.4274 80.6206 10.181C80.6206 7.93449 78.8028 6.11664 76.5564 6.11664C74.3099 6.11664 72.4921 7.93449 72.4921 10.181C72.4921 12.4274 74.3099 14.2452 76.5564 14.2452Z" fill="white"/>
+                </svg>
+            </div>
+            <h1>Welcome back!</h1>
+            <div class="subtitle">We're so excited to see you again!</div>
+            
+            <form>
+                <div class="form-group">
+                    <label for="email">Email or Phone Number</label>
+                    <input type="text" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                    <a href="#" class="forgot-password">Forgot your password?</a>
+                </div>
+                
+                <button type="submit" class="login-button">Login</button>
+                
+                <div class="register">
+                    Need an account? <a href="#">Register</a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="qr-login">
+            <div class="qr-container">
+                <div class="qr-image">
+                    <!-- QR code placeholder -->
+                    <svg viewBox="0 0 176 176" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="176" height="176" fill="#36393f"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M36 36H60V60H36V36ZM72 36V60H84V72H60V84H48V60H36V84H48V96H60V84H72V96H84V84H96V72H84V60H96V36H72ZM96 96H84V108H96V96ZM36 96V120H60V96H36ZM60 84V96H72V84H60ZM96 36H120V60H96V36ZM36 36V48H48V36H36ZM48 48V60H60V48H48ZM96 36V48H108V36H96ZM108 48V60H120V48H108ZM36 96V108H48V96H36ZM48 108V120H60V108H48ZM108 108H96V120H108V132H120V108H108ZM132 96H144V108H132V96ZM120 72V84H132V96H144V84H156V72H144V84H132V72H120ZM132 120H120V132H132V120ZM144 120H156V156H120V144H144V120Z" fill="black"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="qr-title">Log in with QR Code</div>
+            <div class="qr-subtitle">Scan this with the <strong>Discord mobile app</strong> to log in instantly.</div>
+        </div>
+    </div>
+</body>
+</html>

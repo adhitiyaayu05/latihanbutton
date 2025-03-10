@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #5865f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background decorations */
+        .bg-decoration {
+            position: absolute;
+            z-index: 0;
+        }
+
+        .girl-left {
+            position: absolute;
+            left: 10%;
+            top: 30%;
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQnPSIyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNzUiIGN5PSI3NSIgcj0iNzUiIGZpbGw9IiNmZjczZmEiLz48L3N2Zz4=') center/contain no-repeat;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEwIDEuNWwyLjMyMyA3LjE1Mmg3LjUyN2wtNi4wOSA0LjQyNSAyLjMyNCA3LjE1MkwxMCAxNS44MDRsLTYuMDg0IDQuNDI1IDIuMzI0LTcuMTUyTC4xNSA4LjY1Mmg3LjUyN0wxMCAxLjV6IiBmaWxsPSIjZmZmIi8+PC9zdmc+') center/contain no-repeat;
+        }
+
+        .star1 {
+            left: 20%;
+            top: 15%;
+        }
+
+        .star2 {
+            right: 15%;
+            top: 20%;
+        }
+
+        .star3 {
+            left: 15%;
+            bottom: 20%;
+        }
+
+        .star4 {
+            right: 25%;
+            bottom: 15%;
+        }
+
+        .creature-bottom {
+            position: absolute;
+            left: 25%;
+            bottom: 5%;
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI3NSIgY3k9Ijc1IiByPSI3NSIgZmlsbD0iIzRiZDY2ZiIvPjwvc3ZnPg==') center/contain no-repeat;
+        }
+
+        .creature-right {
+            position: absolute;
+            right: 15%;
+            bottom: 20%;
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI3NSIgY3k9Ijc1IiByPSI3NSIgZmlsbD0iI2ZmYzYyZiIvPjwvc3ZnPg==') center/contain no-repeat;
+        }
+
+        /* Login container */
+        .login-container {
+            background-color: #36393f;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+            width: 480px;
+            padding: 32px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            display: flex;
+        }
+
+        .login-form {
+            flex: 3;
+        }
+
+        .qr-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #b9bbbe;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #8e9297;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input {
+            background-color: #202225;
+            border: 1px solid #202225;
+            border-radius: 3px;
+            color: #dcddde;
+            font-size: 16px;
+            height: 40px;
+            padding: 10px;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        input:focus {
+            border-color: #7289da;
+        }
+
+        .forgot-password {
+            color: #00aff4;
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            background-color: #5865f2;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            height: 44px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .login-button:hover {
+            background-color: #4752c4;
+        }
+
+        .register {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #72767d;
+        }
+
+        .register a {
+            color: #00aff4;
+            text-decoration: none;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+
+        /* QR Code Section */
+        .qr-code {
+            background-color: white;
+            width: 120px;
+            height: 120px;
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .qr-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .qr-subtitle {
+            font-size: 14px;
+            color: #b9bbbe;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Add responsive design */
+        @media (max-width: 768px) {
+            .login-container {
+                width: 90%;
+                flex-direction: column;
+            }
+            
+            .qr-container {
+                margin-left: 0;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background decorations -->
+    <div class="bg-decoration girl-left"></div>
+    <div class="bg-decoration star star1"></div>
+    <div class="bg-decoration star star2"></div>
+    <div class="bg-decoration star star3"></div>
+    <div class="bg-decoration star star4"></div>
+    <div class="bg-decoration creature-bottom"></div>
+    <div class="bg-decoration creature-right"></div>
+
+    <!-- Login container -->
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Welcome back!</h2>
+            <div class="subtitle">We're so excited to see you again!</div>
+            
+            <form>
+                <div class="form-group">
+                    <label for="email">EMAIL OR PHONE NUMBER</label>
+                    <input type="text" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">PASSWORD</label>
+                    <input type="password" id="password" required>
+                    <a href="#" class="forgot-password">Forgot your password?</a>
+                </div>
+                
+                <button type="submit" class="login-button">Log in</button>
+                
+                <div class="register">
+                    Need an account? <a href="#">Register</a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="qr-container">
+            <div class="qr-code">
+                <!-- QR code image -->
+                <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H33.846V33.846H0V0ZM42.308 0V33.846H59.231V42.308H33.846V59.231H25.385V33.846H0V59.231H25.385V67.692H33.846V59.231H42.308V67.692H59.231V59.231H67.692V42.308H59.231V33.846H67.692V0H42.308ZM67.692 67.692H59.231V76.154H67.692V67.692ZM0 67.692V101.538H33.846V67.692H0ZM33.846 59.231V67.692H42.308V59.231H33.846ZM67.692 0H101.538V33.846H67.692V0ZM0 0V16.923H16.923V0H0ZM16.923 16.923V33.846H33.846V16.923H16.923ZM67.692 0V16.923H84.615V0H67.692ZM84.615 16.923V33.846H101.538V16.923H84.615ZM0 67.692V84.615H16.923V67.692H0ZM16.923 84.615V101.538H33.846V84.615H16.923ZM84.615 84.615H67.692V101.538H84.615V110H101.538V84.615H84.615ZM110 67.692H93.077V84.615H110V67.692ZM101.538 42.308V59.231H110V67.692H93.077V59.231H84.615V42.308H101.538ZM110 16.923H93.077V33.846H110V16.923Z" fill="black"/>
+                </svg>
+            </div>
+            <div class="qr-title">Log in with QR Code</div>
+            <div class="qr-subtitle">Scan this with the <strong>Discord mobile app</strong> to log in instantly.</div>
+        </div>
+    </div>
+</body>
+</html>
